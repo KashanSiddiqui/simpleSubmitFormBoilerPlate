@@ -1,28 +1,140 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import InputBase from '@material-ui/core/InputBase';
+import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
+import FormControl from '@material-ui/core/FormControl';
+import purple from '@material-ui/core/colors/purple';
+import green from '@material-ui/core/colors/green';
+import Button from '@material-ui/core/Button';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  margin: {
+    margin: theme.spacing.unit,
+  },
+  cssLabel: {
+    '&$cssFocused': {
+      color: purple[500],
+    },
+  },
+  cssFocused: {},
+  cssUnderline: {
+    '&:after': {
+      borderBottomColor: purple[500],
+    },
+  },
+  cssOutlinedInput: {
+    '&$cssFocused $notchedOutline': {
+      borderColor: purple[500],
+    },
+  },
+  notchedOutline: {},
+  bootstrapRoot: {
+    'label + &': {
+      marginTop: theme.spacing.unit * 3,
+    },
+  },
+  bootstrapInput: {
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: theme.palette.common.white,
+    border: '1px solid #ced4da',
+    fontSize: 16,
+    width: 'auto',
+    padding: '10px 12px',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:focus': {
+      borderRadius: 4,
+      borderColor: '#80bdff',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+    },
+  },
+  bootstrapFormLabel: {
+    fontSize: 18,
+  },
+});
+
+const theme = createMuiTheme({
+  palette: {
+    primary: green,
+  },
+  typography: { useNextVariants: true },
+});
+
+function CustomizedInputs(props) {
+  const { classes } = props;
+
+  return (
+    <div className={classes.root}>
+      
+      <TextField
+        className={classes.margin}
+        InputLabelProps={{
+          classes: {
+            root: classes.cssLabel,
+            focused: classes.cssFocused,
+          },
+        }}
+        InputProps={{
+          classes: {
+            root: classes.cssOutlinedInput,
+            focused: classes.cssFocused,
+            notchedOutline: classes.notchedOutline,
+          },
+        }}
+        label="Custom CSS"
+        variant="outlined"
+        id="custom-css-outlined-input"
+        style={{width:'25%',marginTop:'25px',marginLeft:'40px'}}
+      />
+      <div style={{marginTop:'25px'}}>
+      <input
+        accept="image/*"
+        className={classes.input}
+        id="contained-button-file"
+        multiple
+        type="file"
+      />
+      <label htmlFor="contained-button-file">
+        <Button variant="contained" component="span" className={classes.button}>
+          Upload
+        </Button>
+      </label>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-export default App;
+CustomizedInputs.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+// ContainedButtons.propTypes = {
+// classes: PropTypes.object.isRequired,
+// };
+export default withStyles(styles)(CustomizedInputs);
