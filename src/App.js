@@ -9,10 +9,16 @@ import FormControl from '@material-ui/core/FormControl';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
+    margin:'0',
+    height:'53px'
+  },
+  rightIcon: {
+    marginLeft: theme.spacing.unit,
   },
   input: {
     display: 'none',
@@ -21,6 +27,7 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
   },
+
   margin: {
     margin: theme.spacing.unit,
   },
@@ -90,8 +97,8 @@ function CustomizedInputs(props) {
   const { classes } = props;
 
   return (
-    <div className={classes.root}>
-      
+    <div className={classes.root} >
+      <div style={{margin:'0 auto'}}>
       <TextField
         className={classes.margin}
         InputLabelProps={{
@@ -107,10 +114,10 @@ function CustomizedInputs(props) {
             notchedOutline: classes.notchedOutline,
           },
         }}
-        label="Custom CSS"
+        label="INPUT ID"
         variant="outlined"
         id="custom-css-outlined-input"
-        style={{width:'25%',marginTop:'25px',marginLeft:'40px'}}
+        style={{width:'25%',marginTop:'300px',marginLeft:'40px'}}
       />
       <div style={{marginTop:'25px'}}>
       <input
@@ -119,12 +126,18 @@ function CustomizedInputs(props) {
         id="contained-button-file"
         multiple
         type="file"
+        
       />
-      <label htmlFor="contained-button-file">
+      <label htmlFor="contained-button-file" style={{margin:'0px'}}>
         <Button variant="contained" component="span" className={classes.button}>
           Upload
         </Button>
       </label>
+      </div>
+      <Button variant="contained" color="primary" className={classes.button} style={{marginTop:'25px',width:'105px'}}>
+        
+        SEND
+      </Button>
       </div>
     </div>
   );
