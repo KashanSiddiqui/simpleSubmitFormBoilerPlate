@@ -1,33 +1,31 @@
-.App {
+.heading{
   text-align: center;
+  margin: 3em auto 0em auto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.form-style{
+  box-shadow: 0px 5px 15px 3px #00000024;
+  border-radius: 15px;
+  height: 23em;
+  width: 35em;
+  margin: 5em auto;
+  padding: 5em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn{
+  width: 40%;
+}
+
+.waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"]{
   color: white;
+  
+}
+i.btn.waves-effect.waves-light.btn.waves-input-wrapper {
+    width: 100%;  
+    margin-top: 1em;
 }
 
-.App-link {
-  color: #61dafb;
-}
+.file-field{
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+  height: 36px;
+} 
